@@ -3,20 +3,22 @@ class User {
     constructor(username,emailAddress){
         this.name = username
         this.email = emailAddress
-        this.accountBalance = 0
+        this.account = new BankAccount()
         return this
     }
     makeDeposit(amount){
-        this.accountBalance += amount
+        this.account.deposit(amount)
         return this
     }
     makeWithdrawal(amount){
-        this.accountBalance -= amount
+        this.account.withdraw(amount)
         return this
 
     }
-    displayBalance() {
-        console.log('User:', this.name , 'Balance:', this.accountBalance)
+    displayInfo() {
+        console.log(
+            `Name: ${this.name}, Account Balance: $${this.account.balance}, Interest Rate: ${this.account.intRate}`
+        )
         return this
 
     }
@@ -47,8 +49,8 @@ class BankAccount {
         return this
     }
     displayAccountInfo() {
-        console.log('User:', user , 'Balance:', this.accountBalance)
-        `Current Balance: $${this.balance}, Interest Rate: ${this.intRate}`
+        console.log(
+        `Current Balance: $${this.balance}, Interest Rate: ${this.intRate}`)
         return this
     }
     yieldInterest() {
@@ -59,9 +61,10 @@ class BankAccount {
 
 
 
-const Christopher = new User("Christopher","framedgamescreations@gmail.com",BankAccount)
-const Britt = new User("Britt","nomail@snailmail.org",BankAccount)
-const Biscuit = new User("Biscuit","IamAdOg@hotmail.com",BankAccount)
+const Christopher = new User("Christopher","framedgamescreations@gmail.com")
+const Britt = new User("Britt","nomail@snailmail.org")
+const Biscuit = new User("Biscuit","IamAdOg@hotmail.com")
+
 
 
 
@@ -82,10 +85,7 @@ const Biscuit = new User("Biscuit","IamAdOg@hotmail.com",BankAccount)
 //        .makeWithdrawal(100)
 //        .displayBalance()
 
-const bank = new BankAccount()
-const bank2 = new BankAccount(0.02,1500)
 
 
-console.log(Britt)
-console.log(Biscuit)
-console.log(Christopher)
+Christopher.makeDeposit(200)
+Christopher.displayInfo()
