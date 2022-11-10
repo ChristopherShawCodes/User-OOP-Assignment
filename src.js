@@ -27,33 +27,65 @@ class User {
     }
 }
 
+class BankAccount {
+    constructor(intRate = 0.08, balance = 0) {
+    	this.intRate = intRate
+        this.balance = balance
+        return this
+    }
+    deposit(amount) {
+	    this.balance += amount
+        return this
+    }
+    withdraw(amount) {
+	    this.balance -= amount
+        if (this.balance < 0){
+            console.log("Insufficient Funds: Charging a $5 fee")
+            this.balance -= 5
+            console.log(balance)
+        }
+        return this
+    }
+    displayAccountInfo() {
+        console.log('User:', user , 'Balance:', this.accountBalance)
+        `Current Balance: $${this.balance}, Interest Rate: ${this.intRate}`
+        return this
+    }
+    yieldInterest() {
+        this.balance += this.balance * this.intRate
+        return this
+    }
+}
 
-const Christopher = new User("Christopher","framedgamescreations@gmail.com")
-const Britt = new User("Britt","nomail@snailmail.org")
-const Biscuit = new User("Biscuit","IamAdOg@hotmail.com")
+
+
+const Christopher = new User("Christopher","framedgamescreations@gmail.com",BankAccount)
+const Britt = new User("Britt","nomail@snailmail.org",BankAccount)
+const Biscuit = new User("Biscuit","IamAdOg@hotmail.com",BankAccount)
+
+
 
 // Christopher.makeDeposit(100)
-// Christopher.makeDeposit(500)
-// Christopher.makeDeposit(500)
-// Christopher.makeWithdrawal(200)
-// Christopher.transferMoney(200,Britt)
-// Christopher.displayBalance()
+//            .makeDeposit(500)
+//            .makeDeposit(500)
+//            .makeWithdrawal(200)
+//            .transferMoney(200,Britt)
+//            .displayBalance()
+
+// Britt.makeDeposit(700)
+//      .makeDeposit(200)
+//      .displayBalance()
 
 
-Christopher.makeDeposit(100).makeDeposit(500).makeDeposit(500).makeWithdrawal(200).transferMoney(200,Britt).displayBalance()
+// Biscuit.makeDeposit(900)
+//        .makeWithdrawal(300)
+//        .makeWithdrawal(100)
+//        .displayBalance()
+
+const bank = new BankAccount()
+const bank2 = new BankAccount(0.02,1500)
 
 
-
-Britt.makeDeposit(700)
-Britt.makeDeposit(200)
-Britt.displayBalance()
-
-Biscuit.makeDeposit(900)
-Biscuit.makeWithdrawal(300)
-Biscuit.makeWithdrawal(100)
-Biscuit.makeWithdrawal(50)
-Biscuit.displayBalance()
-
-
-
-
+console.log(Britt)
+console.log(Biscuit)
+console.log(Christopher)
